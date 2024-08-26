@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Matrices</title>
+    <link rel="stylesheet" href="../styles/styles.css">
+</head>
+<body>
+    <h1>Calculadora de Matrices</h1>
+    <div id="matriz-container">
+        <h2>Ingreso de Matrices</h2>
+        <form id="matriz-form">
+            <label for="numMatrices">numero de matrices:</label>
+            <input type="number" id="numMatrices" name="numMatrices" min="2" required>
+            <button type="button" onclick="matrizInputs()">generar Matrices</button>
+            <label for="operation">Operación:</label>
+            <select id="operation" name="operation">
+                <option value="+">suma</option>
+                <option value="-">resta</option>
+                <option value="x">multiplicación</option>
+            </select>
+        </form>
+        <div id="matrizInputs"></div>
+        <button type="button" onclick="operation()">Calcular</button>
+        <p id="response"></p>
+    </div>
+    <script type="module" src="./js/index.js"></script>
+</body>
+</html>
