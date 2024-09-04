@@ -1,7 +1,22 @@
 export function calculateTranspose(index) {
     const rows = parseInt(document.getElementById(`rows${index}`).value);
     const cols = parseInt(document.getElementById(`cols${index}`).value);
-    let matrizData = document.getElementById(`matriz${index}`).value.trim().split('\n').map(row => row.split(/\s+/).map(Number));
+    const gridContainer = document.getElementById(`matrizGrid${index}`);
+    if (!gridContainer) {
+        console.error(`No se encontró el contenedor de la matriz con el índice ${index}`);
+        return;
+    }
+
+    // array con los valores de los inputs
+    let matrizData = [];
+    for (let r = 0; r < rows; r++) {
+        let row = [];
+        for (let c = 0; c < cols; c++) {
+            const value = parseFloat(document.getElementById(`matriz${index}_${r}_${c}`).value);
+            row.push(value);
+        }
+        matrizData.push(row);
+    }
 
     if (matrizData.length !== rows || matrizData[0].length !== cols) {
         document.getElementById(`resultTranspose${index}`).innerHTML = `<h3>Error: las dimensiones no coinciden.</h3>`;
@@ -15,11 +30,20 @@ export function calculateTranspose(index) {
 export function calculateDeterminant(index) {
     const rows = parseInt(document.getElementById(`rows${index}`).value);
     const cols = parseInt(document.getElementById(`cols${index}`).value);
-    let matrizData = document.getElementById(`matriz${index}`).value.trim().split('\n').map(row => row.split(/\s+/).map(Number));
-
     if (rows !== cols) {
         document.getElementById(`resultDeterminant${index}`).innerHTML = `<h3>Error: la matriz no es cuadrada.</h3>`;
         return;
+    }
+
+    // array con los valores de los inputs
+    let matrizData = [];
+    for (let r = 0; r < rows; r++) {
+        let row = [];
+        for (let c = 0; c < cols; c++) {
+            const value = parseFloat(document.getElementById(`matriz${index}_${r}_${c}`).value);
+            row.push(value);
+        }
+        matrizData.push(row);
     }
 
     let determinant = calcDeterminant(matrizData);
