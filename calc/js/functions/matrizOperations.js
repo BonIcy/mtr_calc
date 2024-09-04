@@ -7,14 +7,16 @@ export function operation() {
 
     let matrices = [];
     for (let i = 0; i < numMatrices; i++) {
-        // Numero de filas y columnas de la matriz y el contenido(matriz) ingresado por el usuario
         const rows = parseInt(document.getElementById(`rows${i}`).value);
         const cols = parseInt(document.getElementById(`cols${i}`).value);
-        let matrizData = document.getElementById(`matriz${i}`).value.trim().split('\n').map(row => row.split(/\s+/).map(Number));
-        // Validación de las dimensiones 
-        if (matrizData.length !== rows || matrizData[0].length !== cols) {
-            document.getElementById('response').innerHTML = `<h3>Error en la matriz ${i + 1}: las dimensiones no coinciden.</h3>`;
-            return;
+        let matrizData = [];
+
+        for (let r = 0; r < rows; r++) {
+            let row = [];
+            for (let c = 0; c < cols; c++) {
+                row.push(parseFloat(document.getElementById(`matriz${i}_${r}_${c}`).value));
+            }
+            matrizData.push(row);
         }
 
         matrices.push(matrizData);
