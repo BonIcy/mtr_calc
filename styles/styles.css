@@ -1,45 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Protest+Guerrilla&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fascinate+Inline&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap');
 body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
+    /* font-family: "Protest Guerrilla", sans-serif; */
+    /* font-family: "Fascinate Inline", system-ui; */
+    font-family: "Gloria Hallelujah", cursive;
+    background-color: #0d0f18;
+    background-image: url("https://art.pixilart.com/58c6ba2fa65548d.gif");
+    background-repeat: no-repeat; 
+    background-size: cover; 
+    background-attachment: fixed; 
+    background-position: center; 
+    color: #e0e0e0;
+    min-height: 100vh; 
+    margin: 0;
+    padding: 1rem;
 }
 
 h1 {
+    position: relative;
+    color: #fff;
+    font-size: 3rem; 
     text-align: center;
+    text-shadow: 0 0 10px #ff00ff, 0 0 20px #0000ff;
+    margin-top: 2rem;
+    animation: glitch 2s infinite;
 }
-
-#matrix-container {
-    max-width: 800px;
-    margin: 0 auto;
+h3{
+    font-size: 1.7rem;
 }
-
-form {
-    margin-bottom: 20px;
+pre{
+    font-size: 1.5rem;
 }
-
 label {
-    display: block;
-    margin-top: 10px;
+    font-size: 1.5rem;
 }
 
-input {
-    margin-bottom: 10px;
+h1::before, h1::after {
+    content: "Calculadora de Matrices"; 
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    overflow: hidden;
+    color: #ff00ff;
+    z-index: -1;
+    animation: glitch 1s infinite;
+}
+
+h1::after {
+    color: #00ffff;
+    z-index: -2;
+    animation: glitch 1.5s infinite;
+}
+
+@keyframes glitch {
+    0% { transform: translate(0); }
+    20% { transform: translate(-9px, -9px); }
+    40% { transform: translate(9px, 9px); }
+    60% { transform: translate(-9px, 9px); }
+    80% { transform: translate(9px, -9px); }
+    100% { transform: translate(0); }
+}
+
+#matriz-container {
+    background: linear-gradient(145deg, #141c2b, #0b0d13);
+    border: 2px solid rgb(98, 0, 234);
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 4px 30px rgba(0, 0, 255, 0.5), 0 6px 20px rgba(128, 0, 128, 0.8);
+    max-width: 40rem; /* En rem */
+    width: 100%;
+    margin: auto;
+    transition: 0.3s ease-in-out;
+}
+
+#matriz-container:hover {
+    box-shadow: 0 8px 40px rgba(0, 0, 255, 0.7), 0 12px 40px rgba(128, 0, 128, 1);
+}
+
+
+input, select, button {
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 0.8rem;
+    border: none;
+    outline: none;
+    font-size: 1.3rem;
+    width: 95%;
 }
 
 button {
-    margin-top: 10px;
-    padding: 5px 10px;
-}
-
-#matrix-inputs {
-    margin-top: 20px;
-}
-
-textarea {
+    background-color: #a600ff;
+    color: #fff;
+    cursor: pointer;
+    padding: 1rem;
+    border-radius: 0.8rem;
+    border: none;
+    outline: none;
+    font-size: 1.3rem;
     width: 100%;
-    height: 100px;
-    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 0 7px #b300ff, 0 0 15px #b300ff, 0 0 25px #b300ff ;
 }
 
-p {
-    color: red;
+button:hover {
+    background-color: #0000ff8d;
+    box-shadow: 0 0 10px #0000ff87, 0 0 20px #0000ff91, 0 0 30px #0000ff87;
+}
+
+button:active {
+    box-shadow: 0 0 3px #8000ff, 0 0 6px #8000ff, 0 0 9px #8000ff;
+}
+
+.matriz-grid {
+    display: grid;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+.grid-item {
+    background-color: #1e2433;
+    color: #e0e0e0;
+    padding: 1rem;
+    text-align: center;
+    font-size: 1.5rem;
+    border: 2px solid #8983f1;
+    border-radius: 0.8rem;
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5rem;
+        margin-left: 0; 
+    }
+    #matriz-container {
+        padding: 1.5rem;
+        box-shadow: 0 4px 15px rgba(0, 0, 255, 0.5), 0 6px 15px rgba(128, 0, 128, 0.8);
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 2rem;
+        margin-left: 0;
+        margin-top: 1rem;
+    }
+    #matriz-container {
+        padding: 1rem;
+    }
+    .grid-item {
+        font-size: 1.2rem;
+        padding: 0.8rem;
+    }
 }
