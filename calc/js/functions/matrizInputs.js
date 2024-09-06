@@ -24,13 +24,13 @@ export function matrizInputs() {
 export function generateGrid(index) {
     const rows = parseInt(document.getElementById(`rows${index}`).value);
     const cols = parseInt(document.getElementById(`cols${index}`).value);
-    let gridHTML = '<div class="grid-container">';
+
+    let gridHTML = `<div class="grid-container" style="display: grid; grid-template-columns: repeat(${cols}, 1fr); gap: 10px;">`;
 
     for (let i = 0; i < rows; i++) {
         for (let j = 0; j < cols; j++) {
             gridHTML += `<input type="number" id="matriz${index}_${i}_${j}" class="grid-item" required>`;
         }
-        gridHTML += '<br>';
     }
 
     gridHTML += '</div>';
