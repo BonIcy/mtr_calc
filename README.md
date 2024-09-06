@@ -1,32 +1,101 @@
 # 📊 Calculadora de Matrices
+
 ## 📝 Descripción General
 
 La Calculadora de Matrices es una aplicación web que permite realizar operaciones básicas como suma, resta y multiplicación entre matrices. Los usuarios pueden ingresar múltiples matrices de diferentes dimensiones y seleccionar la operación que desean realizar. La aplicación valida las dimensiones de las matrices para asegurarse de que las operaciones sean válidas y muestra el resultado o un mensaje de error según corresponda.
+
+Además de las operaciones básicas, ahora la aplicación también permite calcular la transpuesta y el determinante de cada matriz ingresada por el usuario, así como de la matriz resultante de las operaciones.
 
 ## 📂 Estructura del Proyecto
 
 El proyecto está organizado en varios archivos JavaScript que manejan diferentes aspectos de la funcionalidad:
 
-    index.html: La interfaz de usuario de la calculadora.
-    index.js: Gestiona la interacción entre la interfaz de usuario y las funciones de la calculadora.
-    app.js: Punto de entrada para las funciones principales.
-    matrizInputs.js: Genera los campos de entrada para las matrices según la cantidad indicada por el usuario.
-    matrizOperations.js: Realiza las operaciones seleccionadas (suma, resta, multiplicación) entre las matrices.
-    matrizUtils.js: Contiene funciones auxiliares, como la multiplicación de matrices y la conversión de matrices a cadenas de texto para mostrar los resultados.
+- `index.html`: La interfaz de usuario de la calculadora.
+- `index.js`: Gestiona la interacción entre la interfaz de usuario y las funciones de la calculadora.
+- `app.js`: Punto de entrada para las funciones principales.
+- `matrizInputs.js`: Genera los campos de entrada para las matrices según la cantidad indicada por el usuario.
+- `matrizOperations.js`: Realiza las operaciones seleccionadas (suma, resta, multiplicación) entre las matrices.
+- `matrizExtras.js`: Contiene funciones adicionales para calcular la transpuesta y el determinante de las matrices.
 
-### ⚙️ Funcionamiento de la Calculadora
-##### 🛠️ Paso a Paso
+## ⚙️ Funcionamiento de la Calculadora
 
-    Ingreso de Matrices:
-        El usuario ingresa el número de matrices que desea operar.
-        La función matrizInputs() genera los campos de entrada necesarios (filas, columnas y valores de la matriz) para cada matriz.
+### 🛠️ Paso a Paso
 
-    Selección de Operación:
-        El usuario selecciona la operación que desea realizar: suma (+), resta (-), o multiplicación (x).
+1. **Ingreso de Matrices**:
+    - El usuario ingresa el número de matrices que desea operar.
+    - La función `matrizInputs()` genera los campos de entrada necesarios (filas, columnas y valores de la matriz) para cada matriz.
 
-    Cálculo:
-        Al hacer clic en "Calcular", la función operation() toma las matrices ingresadas, valida sus dimensiones, y realiza la operación seleccionada.
-        El resultado de la operación se muestra en pantalla, o si las dimensiones no son compatibles, se muestra un mensaje de error.
+2. **Selección de Operación**:
+    - El usuario selecciona la operación que desea realizar: suma (+), resta (-), o multiplicación (x).
+
+3. **Cálculo**:
+    - Al hacer clic en "Calcular", la función `operation()` toma las matrices ingresadas, valida sus dimensiones, y realiza la operación seleccionada.
+    - El resultado de la operación se muestra en pantalla, o si las dimensiones no son compatibles, se muestra un mensaje de error.
+
+4. **Funciones Adicionales**:
+    - **Transpuesta**: Permite calcular la transpuesta de cada matriz ingresada y del resultado de la operación.
+    - **Determinante**: Permite calcular el determinante de cada matriz ingresada y del resultado de la operación (solo para matrices cuadradas).
+
+## 📚 Funciones Adicionales
+
+### 🔄 Transpuesta
+
+- **Funciones Involucradas**:
+    - `calculateTranspose()`
+
+- **Proceso**:
+    - La función `calculateTranspose()` toma la matriz ingresada por el usuario y calcula su transpuesta. La transpuesta de una matriz se obtiene intercambiando sus filas por columnas.
+
+- **Datos de Entrada**:
+    - Una matriz cuadrada o rectangular.
+
+- **Datos de Salida**:
+    - La transpuesta de la matriz ingresada.
+
+### 🔢 Determinante
+
+- **Funciones Involucradas**:
+    - `calculateDeterminant()`
+    - `calcDeterminant()`
+
+- **Proceso**:
+    - La función `calculateDeterminant()` calcula el determinante de una matriz cuadrada. La función `calcDeterminant()` realiza el cálculo real, usando la eliminación de Laplace para matrices de dimensiones mayores a 2x2.
+
+- **Datos de Entrada**:
+    - Una matriz cuadrada.
+
+- **Datos de Salida**:
+    - El valor del determinante de la matriz.
+
+## 📌 Ejemplos
+
+- **Cálculo de la Transpuesta**:
+    - Para una matriz de entrada: 
+      ```
+      1 2
+      3 4
+      ```
+    - La transpuesta sería:
+      ```
+      1 3
+      2 4
+      ```
+
+- **Cálculo del Determinante**:
+    - Para una matriz 2x2:
+      ```
+      1 2
+      3 4
+      ```
+    - El determinante sería:
+      ```
+      (1*4) - (2*3) = -2
+      ```
+
+## 🛠️ Notas Adicionales
+
+- La transpuesta y el determinante solo están disponibles para matrices ingresadas por el usuario y para el resultado de la operación, si las dimensiones lo permiten.
+- Los resultados de la transpuesta y el determinante se muestran junto a las matrices correspondientes en la interfaz de usuario.
 
 ##  Operaciones Disponibles
  ### ➕ Suma
