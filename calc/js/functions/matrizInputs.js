@@ -13,8 +13,16 @@ export function matrizInputs() {
         matrizInputsHTML += `<button type="button" onclick="generateGrid(${i})">Generar Matriz</button>`;
         matrizInputsHTML += `<button type="button" onclick="calculateTranspose(${i})">Transpuesta</button>`;
         matrizInputsHTML += `<button type="button" onclick="calculateDeterminant(${i})">Determinante</button>`;
+        matrizInputsHTML += `<button type="button" onclick="calculateInverse(${i})">Inversa</button>`;
+        matrizInputsHTML += `<button type="button" onclick="calculateAdjunta(${i})">Adjunta</button>`;
+        matrizInputsHTML += `<button type="button" onclick="calculateGauss(${i})">Reducción Gauss</button>`;
+        matrizInputsHTML += `<button type="button" onclick="calculateGaussJordan(${i})">Reducción Gauss-Jordan</button>`;
         matrizInputsHTML += `<div id="resultTranspose${i}"></div>`;
         matrizInputsHTML += `<div id="resultDeterminant${i}"></div>`;
+        matrizInputsHTML += `<div id="resultInverse${i}"></div>`;
+        matrizInputsHTML += `<div id="resultAdjunta${i}"></div>`;
+        matrizInputsHTML += `<div id="resultGauss${i}"></div>`;
+        matrizInputsHTML += `<div id="resultGaussJordan${i}"></div>`;
     }
 
     document.getElementById('matrizInputs').innerHTML = matrizInputsHTML;
@@ -29,7 +37,7 @@ export function generateGrid(index) {
 
     for (let i = 0; i < rows; i++) {
         for (let j = 0; j < cols; j++) {
-            gridHTML += `<input type="number" id="matriz${index}_${i}_${j}" class="grid-item" required>`;
+            gridHTML += `<input type="text" id="matriz${index}_${i}_${j}" class="grid-item" required>`;
         }
     }
 

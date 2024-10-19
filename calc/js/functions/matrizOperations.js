@@ -1,5 +1,6 @@
-import { matrizMultiply, matrizToString } from './matrizUtils.js';
-import { calculateTranspose, calculateDeterminant, calcDeterminant } from './matrizExtras.js';
+import {  matrizToString } from './corte2/utils.js';
+
+
 
 export function operation() {
     const numMatrices = parseInt(document.getElementById('numMatrices').value);
@@ -14,7 +15,9 @@ export function operation() {
         for (let r = 0; r < rows; r++) {
             let row = [];
             for (let c = 0; c < cols; c++) {
-                row.push(parseFloat(document.getElementById(`matriz${i}_${r}_${c}`).value));
+                const inputValue = document.getElementById(`matriz${i}_${r}_${c}`).value.trim();
+                const value = parseFloat(inputValue); 
+                row.push(value);
             }
             matrizData.push(row);
         }
@@ -24,12 +27,10 @@ export function operation() {
 
     let result = '';
     let response = '';
-    // segun la operación elegida por el usuario
+
     switch (operation) {
         case '+':
-            // comprueba si es cuadrada la matriz
             if (matrices.every(m => m.length === matrices[0].length && m[0].length === matrices[0][0].length)) {
-                // reduce() acumula los resultados de las operaciones hechas y con map iteramos cada fila y columna para realizar la operación del actual con el iterado
                 result = matrices.reduce((acc, matrizData) => matrizData.map((row, i) => row.map((val, j) => val + acc[i][j])));
                 response += `<h3>Resultado de la Suma:</h3><pre>${matrizToString(result)}</pre>`;
             } else {
@@ -38,7 +39,6 @@ export function operation() {
             break;
         
         case '-':
-            // comprueba si es cuadrada la matriz para la resta
             if (matrices.every(m => m.length === matrices[0].length && m[0].length === matrices[0][0].length)) {
                 result = matrices.reduce((acc, matrizData) => matrizData.map((row, i) => row.map((val, j) => acc[i][j] - val)));
                 response += `<h3>Resultado de la Resta:</h3><pre>${matrizToString(result)}</pre>`;
@@ -57,24 +57,14 @@ export function operation() {
             break;
         
         default:
-            response += `<h3>Operación no reconocida.</h3>`;
+            response += `<h3>Operación no válida.</h3>`;
+            break;
     }
 
-    if (result) {
-        // botones para calcular transpuesta y determinante de resultado
-        response += `
-            <button type="button" onclick="TransResult()">Transpuesta del Resultado</button>
-            <button type="button" onclick="DeteResult()">Determinante del Resultado</button>
-            <div id="resultTransposeFromResult"></div>
-            <div id="resultDeterminantFromResult"></div>
-        `;
-
-        // globaliza el resultad
-        window.resultMatrix = result;
-    }
-
-    document.getElementById('response').innerHTML = response;
+    document.getElementById('result').innerHTML = response;
 }
+
+
 
 // funciones para calcular la transpuesta y el determinante del resultado
 window.TransResult = function () {
