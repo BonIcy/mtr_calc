@@ -1,11 +1,16 @@
-import { matrizInputs, generateGrid, operation, calculateTranspose, calculateDeterminant } from './app.js';
+import { matrizInputs, generateGrid, operation, calculateTranspose, calculateDeterminant, matrizInverse, matrizAdjunta, matrizGauss, matrizGaussJordan, calculateAdjunta, calculateGauss, calculateInverse,calculateGaussJordan } from './app.js';
 
 document.addEventListener('DOMContentLoaded', () => {
-    document.querySelector('button[onclick="matrizInputs()"]').addEventListener('click', matrizInputs);
+    document.getElementById('generateMatrices').addEventListener('click', matrizInputs);
     document.querySelector('button[onclick="operation()"]').addEventListener('click', operation);
     
-    // globalizar 
+    // globalizar funciones
     window.generateGrid = generateGrid;
     window.calculateTranspose = calculateTranspose;
     window.calculateDeterminant = calculateDeterminant;
+    window.calculateInverse = calculateInverse;
+    window.calculateAdjunta = calculateAdjunta; 
+    window.calculateGauss = calculateGauss;
+    window.calculateGaussJordan = calculateGaussJordan;
+    window.operation = operation;
 });

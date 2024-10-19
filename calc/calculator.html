@@ -13,7 +13,8 @@
         <form id="matriz-form">
             <label for="numMatrices">Número de matrices:</label>
             <input type="number" id="numMatrices" name="numMatrices" min="2" required>
-            <button type="button" onclick="matrizInputs()">generar Matrices</button>
+            <!-- <button type="button" onclick="matrizInputs()">generar Matrices</button> -->
+            <button type="button" id="generateMatrices">Generar Matrices</button>
             <label for="operation">Operación:</label>
             <select id="operation" name="operation">
                 <option value="+">suma</option>
@@ -25,6 +26,7 @@
         <button type="button" onclick="operation()">Calcular</button>
         <p id="response"></p>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/fraction.js@4.1.1/fraction.min.js"></script>
     <script type="module" src="js/index.js"></script>
 </body>
 </html>

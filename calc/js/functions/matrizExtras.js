@@ -1,3 +1,17 @@
+function formatFloat(value) {
+    const num = parseFloat(value); 
+    if (num % 1 === 0) {
+        return num.toString(); 
+    }
+    return parseFloat(num.toFixed(3)).toString(); 
+}
+
+export function matrizToString(matrizData) {
+    return matrizData.map(row => 
+        row.map(cell => formatFloat(cell)).join(' ') 
+    ).join('\n');
+}
+
 export function calculateTranspose(index) {
     const rows = parseInt(document.getElementById(`rows${index}`).value);
     const cols = parseInt(document.getElementById(`cols${index}`).value);
@@ -35,7 +49,6 @@ export function calculateDeterminant(index) {
         return;
     }
 
-    // array con los valores de los inputs
     let matrizData = [];
     for (let r = 0; r < rows; r++) {
         let row = [];
@@ -46,8 +59,12 @@ export function calculateDeterminant(index) {
         matrizData.push(row);
     }
 
-    let determinant = calcDeterminant(matrizData);
-    document.getElementById(`resultDeterminant${index}`).innerHTML = `<h3>Determinante:</h3><pre>${determinant}</pre>`;
+    try {
+        let determinant = calcDeterminant(matrizData);
+        document.getElementById(`resultDeterminant${index}`).innerHTML = `<h3>Determinante:</h3><pre>${determinant}</pre>`;
+    } catch (error) {
+        document.getElementById(`resultDeterminant${index}`).innerHTML = `<h3>Error: ${error.message}</h3>`;
+    }
 }
 
 export function calcDeterminant(matriz) {
@@ -58,6 +75,15 @@ export function calcDeterminant(matriz) {
         acc + val * calcDeterminant(matriz.slice(1).map(row => row.filter((_, j) => j !== i))) * (i % 2 === 0 ? 1 : -1), 0);
 }
 
-function matrizToString(matrizData) {
-    return matrizData.map(row => row.join(' ')).join('\n');
-}
+
+
+
+
+
+// calcular la adjunta
+
+
+//  reducción Gauss
+
+
+// reducción Gauss-Jordan
