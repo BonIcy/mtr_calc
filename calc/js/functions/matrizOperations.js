@@ -1,7 +1,5 @@
 import {  matrizToString } from './corte2/utils.js';
 
-
-
 export function operation() {
     const numMatrices = parseInt(document.getElementById('numMatrices').value);
     const operation = document.getElementById('operation').value;
@@ -81,3 +79,4 @@ window.DeteResult = function () {
     let determinant = calcDeterminant(window.resultMatrix);
     document.getElementById('resultDeterminantFromResult').innerHTML = `<h3>Determinante:</h3><pre>${determinant}</pre>`;
 }
+

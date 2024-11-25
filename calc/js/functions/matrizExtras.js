@@ -77,13 +77,3 @@ export function calcDeterminant(matriz) {
 
 
 
-
-
-
-// calcular la adjunta
-
-
-//  reducción Gauss
-
-
-// reducción Gauss-Jordan
