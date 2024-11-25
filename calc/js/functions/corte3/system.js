@@ -9,7 +9,9 @@ export function solveSystem(equations) {
             coef = coef === '' || coef === '+' ? 1 : coef === '-' ? -1 : parseFloat(coef);
             coefficients.push(coef);
         });
-        const independent = -parseFloat(right || 0);
+        const independent = parseFloat(right || 0);
+
+
         return [...coefficients, independent];
     };
 
