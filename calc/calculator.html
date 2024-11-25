@@ -13,7 +13,8 @@
         <form id="matriz-form">
             <label for="numMatrices">Número de matrices:</label>
             <input type="number" id="numMatrices" name="numMatrices" min="2" required>
-            <button type="button" onclick="matrizInputs()">generar Matrices</button>
+            <button type="button" id="generateMatrices">Generar Matrices</button>
+
             <label for="operation">Operación:</label>
             <select id="operation" name="operation">
                 <option value="+">suma</option>
@@ -24,6 +25,20 @@
         <div id="matrizInputs"></div>
         <button type="button" onclick="operation()">Calcular</button>
         <p id="response"></p>
+        <button type="button" id="verifySystemBtn">Verificar Sistema</button>
+
+        <div id="verifySystemModal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn" id="closeModal">&times;</span>
+                <h2>Ingresar Sistema de Ecuaciones</h2>
+                <textarea id="systemInput" rows="6" cols="40" placeholder="Ejemplo:
+                2x-3y+z=0
+                x+y+z=0
+                4x+2y+3z=0"></textarea>
+        <button type="button" id="solveSystemBtn">Resolver</button>
+        <div id="systemResult"></div>
+    </div>
+</div>
     </div>
     <script type="module" src="js/index.js"></script>
 </body>
